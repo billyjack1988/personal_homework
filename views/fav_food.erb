@@ -1,0 +1,8 @@
+<h1> <%=first_n.capitalize%> <%=last_n.capitalize%> What Is Your Favorite Food? </h1> 
+<form method = "post" action = "fav_food"> 
+    <input type ="text" name = "food">  <!--<<<<think params!!!-->
+    <input type = "submit" value = "submit">    
+    <input type = "hidden" name = "first_nam" value = "<%=first_n%>">
+    <input type = "hidden" name = "last_nam" value = "<%=last_n%>">
+    <input type = "hidden" name = "age" value = "<%=age%>">
+</form>

@@ -115,6 +115,10 @@ post '/three_lucky_nums' do
   redirect 'final?first_nam='+ first_name + '&last_nam='+ last_name + '&age='+ age + '&food='+ fav_food + '&drink='+ fav_drink + '&hair_c='+ hair_color + '&eye_c='+ eye_color + '&lnum1='+ lucky_num1 + '&lnum2='+ lucky_num2 + '&lnum3='+ lucky_num3
 end
 
+def add(lnum1, lnum2, lnum3)
+    lnum1.to_i + lnum2.to_i + lnum3.to_i
+end
+
 get '/final' do
      last_name = params[:last_nam]
     first_name = params[:first_nam]
@@ -126,7 +130,8 @@ get '/final' do
       lucky_num1 = params[:lnum1]
     lucky_num2 = params[:lnum2]
     lucky_num3 = params[:lnum3]
-    erb :final, locals:{first_n: first_name, last_n: last_name, age: age, food: fav_food, drink: fav_drink, hair_c: hair_color, eye_c: eye_color, lnum1: lucky_num1, lnum2: lucky_num2, lnum3: lucky_num3} 
+    answer = add(lucky_num1, lucky_num2, lucky_num3)
+    erb :final, locals:{first_n: first_name, answer: answer, last_n: last_name, age: age, food: fav_food, drink: fav_drink, hair_c: hair_color, eye_c: eye_color, lnum1: lucky_num1, lnum2: lucky_num2, lnum3: lucky_num3} 
 end
 
 
@@ -155,10 +160,3 @@ end
 
 
 
-
-# get '/three_lucky_numbers' do  #file name were you want to pull from
-#      last_nam = params[:last_nam]
-#     f_name = params[:f_name]
-#    "#{f_name}  #{last_nam}"
-#    #erb :fav_num1, locals: {first: f_name, last: last_nam, age: session[:age]}
-# end

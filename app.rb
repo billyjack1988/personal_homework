@@ -1,6 +1,23 @@
 require "sinatra"
 
-get '/' do 
+get "/" do 
+    erb :login, locals: {error: ""}
+end 
+
+post '/login' do
+  username = params[:user_nam]
+  password = params[:p_word]
+  error_msg = "Wrong Username or Password:"
+    if username == "bootyjack1234" ; password == "bootymeat1234"
+        redirect '/name?user_nam='+ username + '&p_word='+ password 
+    elsif username == "bootymarv1234" ; password == "bootymarv1234"
+        redirect '/name?user_nam='+ username + '&p_word='+ password
+    else 
+        erb :login, locals: {error: error_msg}
+    end
+end 
+
+get '/name' do 
     erb :first_name 
 end
 
